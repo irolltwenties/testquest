@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: ${TEST_QUEST_DB_LOGIN}
+      POSTGRES_PASSWORD: ${TEST_QUEST_DB_PASSWORD}
+      POSTGRES_DB: ${TEST_QUEST_DB_NAME}
+    ports:
+      - "${TEST_QUEST_DB_PORT}:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${TEST_QUEST_DB_LOGIN} -d ${TEST_QUEST_DB_NAME}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  api:
+    build: .
+    ports:
+      - "${TEST_QUEST_API_PORT}:${TEST_QUEST_API_PORT}"
+    environment:
+      - TEST_QUEST_DB_HOST=postgres
+      - TEST_QUEST_DB_PORT=5432
+      - TEST_QUEST_DB_NAME=${TEST_QUEST_DB_NAME}
+      - TEST_QUEST_DB_LOGIN=${TEST_QUEST_DB_LOGIN}
+      - TEST_QUEST_DB_PASSWORD=${TEST_QUEST_DB_PASSWORD}
+      - TEST_QUEST_API_HOST=${TEST_QUEST_API_HOST:-0.0.0.0}
+      - TEST_QUEST_API_PORT=${TEST_QUEST_API_PORT:-8000}
+    depends_on:
+      postgres:
+        condition: service_healthy
+    volumes:
+      - .:/app
+    command: >
+      sh -c "sleep 5 &&
+             alembic upgrade head &&
+             uvicorn app.main:app --host $$TEST_QUEST_API_HOST --port $$TEST_QUEST_API_PORT"
+
+volumes:
+  postgres_data:
