@@ -59,8 +59,64 @@ docker compose up -d
 ```
 View application logs:
 ```bash
-docker compose logs -f <container name or id default testquest-api-1>
+docker compose logs -f <container name or api>
 ```
+
+## Alternative run (no container)
+Remark: you would not need to setup .env file for this way,
+but you still need to setup alembic.ini to run migrations
+
+### Create virtual environment
+Linux:
+```bash
+python3 -m venv .venv
+```
+Windows:
+```commandline
+py -m venv venv
+```
+or
+```commandline
+python -m venv venv
+```
+### Activate virtual environment
+Linux:
+```bash
+cd .venv/bin && source activate && cd ../../
+```
+Windows:
+```commandline
+cd venv/scripts
+```
+```commandline
+activate
+```
+```commandline
+cd ../../
+```
+After that you must see .venv (or venv) mark left to your directory in terminal.
+### Install dependencies
+```shell
+pip install -r requirements.txt
+```
+### Apply migrations
+```bash
+alembic upgrade head
+```
+### Try to start
+Linux:
+```bash
+python3 main.py
+```
+Windows:
+```commandline
+py main.py
+```
+or 
+```commandline
+python main.py
+```
+
 # API Documentation
 
 After application startup, documentation is available at:
