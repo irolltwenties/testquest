@@ -36,7 +36,8 @@ The test was run on a **work laptop**, which introduces:
 - **Thermal throttling** - CPU frequency reduction due to overheating
 - **Power management** - performance limitations from OS power settings
 - **Background activity** - interference from other applications
-
+# Locust results
+![img.png](img.png)
 ## 📈 What CAN Be Understood from These Results
 
 Despite the limitations, the test confirms basic application viability:

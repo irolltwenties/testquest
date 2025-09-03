@@ -98,5 +98,5 @@ docker compose exec api alembic upgrade head
 ```
 
 # Bench research
-[See the research](./BENCH.md)
+[See the research](doc/BENCH.md)
 
