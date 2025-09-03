@@ -49,10 +49,10 @@ sqlalchemy.url = postgresql+psycopg2://${TEST_QUEST_DB_LOGIN}:${TEST_QUEST_DB_PA
 
 ```bash
 # Запуск всех сервисов
-docker-compose up -d
+docker compose up -d
 
 # Просмотр логов
-docker-compose logs -f api
+docker compose logs -f api
 ```
 
 # Документация API
@@ -65,7 +65,7 @@ ReDoc: http://localhost:8000/redoc
 Для доступа к документации из Docker контейнера убедитесь, что порт 8000 проброшен на хост
 # Запуск тестов
 ```bash
-docker-compose exec api pytest --cov
+docker compose exec api pytest --cov
 ```
 ## Тестирование через Postman
 Импортируйте коллекцию из postman/QnA_API.postman_collection.json
@@ -79,6 +79,6 @@ docker-compose exec api pytest --cov
 ### Ошибка в ходе миграций
 Можно попробовать перезапустить миграции
 ```bash
-docker-compose exec api alembic downgrade base
-docker-compose exec api alembic upgrade head
+docker compose exec api alembic downgrade base
+docker compose exec api alembic upgrade head
 ```

@@ -17,4 +17,4 @@ USER appuser
 
 EXPOSE ${TEST_QUEST_API_PORT:-8000}
 
-CMD ["sh", "-c", "alembic upgrade head && uvicorn app.main:app --host ${TEST_QUEST_API_HOST:-0.0.0.0} --port ${TEST_QUEST_API_PORT:-8000}"]
+CMD ["sh", "-c", "alembic upgrade head && python main.py --host ${TEST_QUEST_API_HOST:-0.0.0.0} --port ${TEST_QUEST_API_PORT:-8000}"]

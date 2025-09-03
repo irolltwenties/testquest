@@ -55,11 +55,11 @@ sqlalchemy.url = postgresql+psycopg2://${TEST_QUEST_DB_LOGIN}:${TEST_QUEST_DB_PA
 
 Start all services in detached mode:
 ```bash
-docker-compose up -d
+docker compose up -d
 ```
 View application logs:
 ```bash
-docker-compose logs -f api
+docker compose logs -f <container name or id default testquest-api-1>
 ```
 # API Documentation
 
@@ -74,7 +74,7 @@ Ensure port 8000 is exposed from the Docker container to access the documentatio
 
 Run tests with coverage:
 ```bash
-docker-compose exec api pytest --cov
+docker compose exec api pytest --cov
 ```
 # Testing with Postman
 
@@ -93,6 +93,6 @@ Ensure that:
 
 Try restarting migrations:
 ```bash
-docker-compose exec api alembic downgrade base
-docker-compose exec api alembic upgrade head
+docker compose exec api alembic downgrade base
+docker compose exec api alembic upgrade head
 ```
