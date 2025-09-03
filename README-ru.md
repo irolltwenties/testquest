@@ -22,7 +22,7 @@ RESTful API для системы вопросов и ответов на FastAP
 # Запуск
 Клонируем репозиторий:
 ```bash
-git clone <your-repo-url>
+git clone https://github.com/irolltwenties/testquest.git
 ```
 
 ## Подготовка к старту
