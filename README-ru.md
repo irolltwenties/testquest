@@ -55,6 +55,61 @@ docker compose up -d
 docker compose logs -f api
 ```
 
+## Альтернативный запуск
+Уточнение: для этого метода не придется настраивать .env файл, 
+но alembic.ini настроить все равно необходимо.
+
+### Создаем виртуальное окружение
+Linux:
+```bash
+python3 -m venv .venv
+```
+Windows:
+```commandline
+py -m venv venv
+```
+или
+```commandline
+python -m venv venv
+```
+### Активируем виртуальное окружение
+Linux:
+```bash
+cd .venv/bin && source activate && cd ../../
+```
+Windows:
+```commandline
+cd venv/scripts
+```
+```commandline
+activate
+```
+```commandline
+cd ../../
+```
+После этого в терминале слева от директории должна появится надпись venv (или .venv).
+### Устанавливаем зависимости проекта
+```shell
+pip install -r requirements.txt
+```
+### Применяем миграции
+```bash
+alembic upgrade head
+```
+### Пробуем запустить проект
+Linux:
+```bash
+python3 main.py
+```
+Windows:
+```commandline
+py main.py
+```
+или 
+```commandline
+python main.py
+```
+
 # Документация API
 После запуска приложения доступны:
 
