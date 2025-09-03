@@ -38,6 +38,7 @@ The test was run on a **work laptop**, which introduces:
 - **Background activity** - interference from other applications
 # Locust results
 ![img.png](img.png)
+![img_1.png](img_1.png)
 ## 📈 What CAN Be Understood from These Results
 
 Despite the limitations, the test confirms basic application viability:
