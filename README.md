@@ -96,3 +96,7 @@ Try restarting migrations:
 docker compose exec api alembic downgrade base
 docker compose exec api alembic upgrade head
 ```
+
+# Bench research
+[See the research](./BENCH.md)
+
