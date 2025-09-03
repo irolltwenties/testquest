@@ -82,3 +82,8 @@ docker compose exec api pytest --cov
 docker compose exec api alembic downgrade base
 docker compose exec api alembic upgrade head
 ```
+
+# Исследование надежности работы
+Для проведения исследования был выбран locust, а в качестве предельного 
+числа пользователей было взято число 50.
+[Ознакомиться с исследованием](doc/BENCH-ru.md)
