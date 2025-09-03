@@ -100,3 +100,6 @@ docker compose exec api alembic upgrade head
 # Bench research
 [See the research](doc/BENCH.md)
 
+# Other languages
+README is also available on russian language
+[README-ru.md](README-ru.md)
