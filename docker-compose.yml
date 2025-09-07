@@ -3,10 +3,10 @@ version: '3.8'
 services:
   api:
     build: .
-    network_mode: host  # ← ДОБАВЬТЕ ЭТО
+    network_mode: host  # host mode for test
     environment:
-      - TEST_QUEST_DB_HOST=localhost  # теперь будет видеть хост
-      - TEST_QUEST_DB_PORT=5432
+      - TEST_QUEST_DB_HOST=${TEST_QUEST_DB_HOST}  
+      - TEST_QUEST_DB_PORT=${TEST_QUEST_DB_HOST}
       - TEST_QUEST_DB_NAME=${TEST_QUEST_DB_NAME}
       - TEST_QUEST_DB_LOGIN=${TEST_QUEST_DB_LOGIN}
       - TEST_QUEST_DB_PASSWORD=${TEST_QUEST_DB_PASSWORD}
